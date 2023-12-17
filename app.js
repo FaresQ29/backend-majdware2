@@ -17,3 +17,11 @@ app.get("/test", (req, res)=>{
 //Auth Routes
 const authRoutes = require("./routes/authRoutes")
 app.use("/auth", authRoutes)
+
+//User Routes
+const userRoutes = require("./routes/userRoutes")
+app.use("/user", userRoutes)
+
+//Factory Routes
+const factoryRoutes = require("./routes/factRoutes")
+app.use("/factory", factoryRoutes)

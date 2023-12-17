@@ -29,7 +29,7 @@ router.post("/register", async (req, res, next)=>{
             {expiresIn: maxAge}
         )
         console.log();
-        res.status(200).json( {name: response.name, password: passwordHash, authToken: token, msg: "Successfully  registered"} )
+        res.status(200).json( {name: response.name, password: passwordHash, userId:response._id,authToken: token, msg: "Successfully  registered"} )
     }
     catch(err){
         res.status(404).json({msg: "Could not connect to the server", err})
@@ -55,8 +55,7 @@ router.post("/login", async (req, res, next)=>{
         const checkPassword = await bcrypt.compare(password, user.password)
         if(!checkPassword){return res.status(422).json({msg: "Invalid password."})}
         const token = jwt.sign({id: user._id}, process.env.SECRET)
-
-        res.status(200).json({authToken: token, name:user.name, msg: "Successfully logged in"})
+        res.status(200).json({authToken: token, name:user.name, userId:user._id, msg: "Successfully logged in"})
 
     }
     catch(err){

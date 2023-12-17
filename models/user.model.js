@@ -5,18 +5,7 @@ const Model = mongoose.model
 const userSchema = new Schema({
     name: {type: String, required: true, unique: true},
     password: { type: String, required: true },
-    factories: [{
-        factoryName: String,
-        entries: [
-            {
-                date: Date,
-                designation: String,
-                credit: Number,
-                debit: Number,
-
-            }
-        ]
-    }],
+    factories: [{type: Schema.Types.ObjectId, ref: "Factory"}],
 })
 
 
