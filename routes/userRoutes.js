@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const {url} = require("../config.js");
 const checkToken = require("../middleware/checkToken");
 
+// app.use("/user", userRoutes)
 
 router.put("/add/:id", async (req, res)=>{
     const id = req.params.id

@@ -6,6 +6,10 @@ const userSchema = new Schema({
     name: {type: String, required: true, unique: true},
     password: { type: String, required: true },
     factories: [{type: Schema.Types.ObjectId, ref: "Factory"}],
+    codes: [{
+        code: String,
+        codeVal: String
+    }]
 })
 
 
