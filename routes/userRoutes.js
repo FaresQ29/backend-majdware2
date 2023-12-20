@@ -8,7 +8,7 @@ const checkToken = require("../middleware/checkToken");
 
 // app.use("/user", userRoutes)
 
-router.put("/add/:id", async (req, res)=>{
+router.put("/add/:id", checkToken, async (req, res)=>{
     const id = req.params.id
     console.log(req.body);
     try{

@@ -11,6 +11,8 @@ const factorySchema = new Schema({
             desig: String,
             credito: String,
             debito: String,
+            timestamp: Number,
+            desigCode: {type: String, default: ""}
         }
     ]
 

@@ -31,12 +31,11 @@ router.get("/fact/:id", checkToken, async (req, res)=>{
     }
     catch(err){
         res.status(400).json({msg: "Could not get factories."})
-
     }
 })
 
 //adds a factory
-router.post("/all", async (req, res)=>{
+router.post("/all", checkToken, async (req, res)=>{
 
     try{
         const response = await Factory.create(req.body)
@@ -48,10 +47,10 @@ router.post("/all", async (req, res)=>{
     }
 })
 // adds/edits an entry
-router.put("/:id", async (req, res)=>{
+router.put("/:id", checkToken, async (req, res)=>{
+    const body = req.body
     try{
-        const response = await Factory.findByIdAndUpdate(req.params.id, req.body)
-        console.log(response);
+        const response = await Factory.findByIdAndUpdate(req.params.id, body)
         res.status(200).json(response)
 
     }
